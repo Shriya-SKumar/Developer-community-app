@@ -14,62 +14,45 @@ import com.model.*;
 import com.service.*;
 @RestController
 @RequestMapping(path="/api")
-public class ResponseController {
-			@Autowired
-			IReposnseService responseservice;
+public class ResponseController 
+{
+		@Autowired
+		IReposnseService responseservice;
 		@PostMapping("/addResponse")	
 		public ResponseEntity<Response>addResponse(@RequestBody Response r1)
 		{
-		  Response feed1=responseservice.addResponse(r1);
-		  ResponseEntity re=new
-		  ResponseEntity<Response>(feed1,HttpStatus.OK);
-		  
-		return re;
+			Response feed1=responseservice.addResponse(r1);
+			ResponseEntity re=new
+			ResponseEntity<Response>(feed1,HttpStatus.OK);  
+			return re;
 		}
 		@PutMapping("/editresponse")
 		public ResponseEntity<Response>editResponse(@RequestBody Response r1) throws Throwable
 		{
 			Response r2=(Response) responseservice.editResponse(r1);
-			ResponseEntity re=new
-					ResponseEntity<Response>(r2,HttpStatus.OK);
-			return re;
-			
+			ResponseEntity re=new ResponseEntity<Response>(r2,HttpStatus.OK);
+			return re;		
 		}
 		@DeleteMapping("/Deleteresponse")
 		public ResponseEntity<Response> deleteResponse(@RequestBody int respid) 
 		{
 			Response r2=(Response) responseservice.deleteResponseById(respid);
-			ResponseEntity re=new
-					ResponseEntity<Response>(r2,HttpStatus.OK);
+			ResponseEntity re=new ResponseEntity<Response>(r2,HttpStatus.OK);
 			return re;
-			
 		}
 		@PostMapping("/GetFeed")
 		public ResponseEntity<Response> getFeed(@RequestBody int feedid) 
 		{
 			List<Response> r2= responseservice.getFeed(feedid);
-			ResponseEntity re=new
-					ResponseEntity<Response>(HttpStatus.OK);
-			return re;
-			
+			ResponseEntity re=new ResponseEntity<Response>(HttpStatus.OK);
+			return re;	
 		}
 		@PostMapping("/GetDeveloper")
 		public ResponseEntity<Response> getDeveloper(@RequestBody int devid) 
 		{
 			List<Response> r2= responseservice.getDeveloper(devid);
-			ResponseEntity re=new
-					ResponseEntity<Response>(HttpStatus.OK);
-			return re;
-			
+			ResponseEntity re=new ResponseEntity<Response>(HttpStatus.OK);
+			return re;	
 		}
-		/*
-		 * @PostMapping("/GetDeveloper") public
-		 * ResponseEntity<Response>GetDeveloper(@RequestBody int devid) { List<Response>
-		 * r2= responseservice.getDeveloper(devid); ResponseEntity re=new
-		 * ResponseEntity<Response>(HttpStatus.OK); return re;
-		 * 
-		 * }
-		 */
 		
-
-		}
+}

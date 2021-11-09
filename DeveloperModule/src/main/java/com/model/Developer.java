@@ -19,7 +19,8 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="developer")
-public class Developer {
+public class Developer 
+{
 	@Id
 	@GeneratedValue
 	private int devId;
@@ -32,20 +33,12 @@ public class Developer {
 	private LocalDate memberSince;
 	private int totalFeeds;
 	private int reputation;
-	
-	
-	  @OneToOne
-	  
-	  @JoinColumn(name = "userId", referencedColumnName = "userId") 
-	  private User users;
-	  
-	  @OneToMany(mappedBy = "dev")
-	  
-	  private List<Feeds> feeds;
-	 
-	 
-	 
-	 
+
+	@OneToOne  
+	@JoinColumn(name = "userId", referencedColumnName = "userId") 
+	private User users;  
+	@OneToMany(mappedBy = "dev")  
+	private List<Feeds> feeds;	 
 	private boolean isverified;
 	private boolean isblocked;
 	public int getDevId() {
@@ -73,11 +66,6 @@ public class Developer {
 	public void setSkillLevel(String skillLevel) {
 		this.skillLevel = skillLevel;
 	}
-	/*
-	 * public String getEmail() { return email; } public void setEmail(String email)
-	 * { email = email; } public String getSkillLevel() { return skillLevel; }
-	 * public void setSkillLevel(String skillLevel) { skillLevel = skillLevel; }
-	 */
 	public LocalDate getMemberSince() {
 		return memberSince;
 	}
@@ -96,27 +84,36 @@ public class Developer {
 	public void setReputation(int reputation) {
 		this.reputation = reputation;
 	}
-	
-	
-	  public User getUsers() { return users; } public void setUsers(User users) {
-	  this.users = users; }
-	  
-	  public List<Feeds> getFeeds() { return feeds; } public void
-	  setFeeds(List<Feeds> feeds) { this.feeds = feeds; }
-	 
-	 
-	 
-	 
-	public boolean isIsverified() {
+	public User getUsers() 
+	{ 
+		return users; 
+	} 
+	public void setUsers(User users) 
+	{
+	  this.users = users; 
+	}
+	public List<Feeds> getFeeds() 
+	{ 
+		return feeds; 
+	} 
+	public void setFeeds(List<Feeds> feeds) 
+	{ 
+		this.feeds = feeds; 
+	} 
+	public boolean isIsverified() 
+	{
 		return isverified;
 	}
-	public void setIsverified(boolean isverified) {
+	public void setIsverified(boolean isverified) 
+	{
 		this.isverified = isverified;
 	}
-	public boolean isIsblocked() {
+	public boolean isIsblocked() 
+	{
 		return isblocked;
 	}
-	public void setIsblocked(boolean isblocked) {
+	public void setIsblocked(boolean isblocked) 
+	{
 		this.isblocked = isblocked;
 	}
 	@Override

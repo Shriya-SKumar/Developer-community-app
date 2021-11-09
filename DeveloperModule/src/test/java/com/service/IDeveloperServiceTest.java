@@ -19,10 +19,10 @@ import com.model.User;
 import com.repository.IDeveloperRepository;
 
 @SpringBootTest
-class IDeveloperServiceTest {
+class IDeveloperServiceTest 
+{
 	@Autowired
 	IDeveloperService developerservice;
-	
 	@MockBean
 	IDeveloperRepository repo;
 	
@@ -62,8 +62,6 @@ class IDeveloperServiceTest {
 		List<Developer> d= new ArrayList<>();
 		d.add(d2);
 		d.add(d1);
-		//System.out.println(d);
-		//System.out.println(repo.findAll());
 		Mockito.when(repo.fetchAllDevelopers()).thenReturn(d);
 		assertThat(developerservice.getAllDevelopers()).isEqualTo(d);
 	}
@@ -114,7 +112,7 @@ class IDeveloperServiceTest {
 		d1.setSkillLevel("0");
 		d1.setTotalFeeds(0);
 		d1.setUsers(u1);
-	Mockito.when(repo.save(d1)).thenReturn(d1);
+		Mockito.when(repo.save(d1)).thenReturn(d1);
 		
 		assertThat(developerservice.addDeveloper(d1)).isEqualTo(d1);
 	}
@@ -149,8 +147,5 @@ class IDeveloperServiceTest {
 		d1.setEmail("xyz@gmail.com");
 		
 		assertThat(developerservice.addDeveloper(d1)).isEqualTo(d1);
-	}
-
-
-	
+	}	
 }

@@ -1,5 +1,4 @@
 package com.controller;
-//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.http.HttpStatus; 
@@ -18,16 +17,17 @@ import com.model.User;
 import com.service.IUserService; 
  @RestController
  @RequestMapping(path="/api") 
-public class UserController {
+public class UserController 
+{
 	 @Autowired 
-	  IUserService userservice;
+	 IUserService userservice;
 	 @PostMapping("/login") 
-	  public ResponseEntity login(@RequestBody User user) throws UserNotFoundException 
-	     { 
+	 public ResponseEntity login(@RequestBody User user) throws UserNotFoundException 
+	 { 
 		  User c1=userservice.login(user);
 		  ResponseEntity re=new ResponseEntity<User>(c1,HttpStatus.OK); 
 		  return re; 
-		  }
+	 }
 	 @PostMapping("/logout")
 	 public ResponseEntity logout(@RequestBody User user)
 	 {
@@ -35,5 +35,4 @@ public class UserController {
 		 ResponseEntity re=new ResponseEntity<User>(c1,HttpStatus.OK); 
 		  return re; 
 	 }
-
 }

@@ -18,12 +18,6 @@ public class User {
 	@Id
 	@GeneratedValue
 	private int userId;
-	
-	  @Pattern (message="bad formed person name: ${validatedValue}",
-	  regexp="^[A-Z][a-z](\\s(([a-z]{1,3})|(([a-z]+\\')?[A-Z][a-z])))*$")
-	  
-	  @Length(min=2)
-
 	  @NotNull
 	 
 	@Column(name="NAME",nullable=false)
